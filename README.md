@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Invite 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Montserrat:wght@300;600&family=Cairo:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        :root {
+            --accent: #eef1e5;
+            --text: #060606;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: 'Cairo', sans-serif;
+            background: #000; overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* صورة الخلفية بحركة سينمائية ناعمة */
+        .bg-wrapper {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; overflow: hidden;
+        }
+
+        .bg-image {
+            width: 100%; height: 100%;
+            background-image: url('https://i.pinimg.com/1200x/23/7e/28/237e282edd93bbcbb23e26e04314637c.jpg'); /* ضع صورتك هنا */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.9);
+            transform: scale(1.3);
+            transition: transform 10s linear;
+        }
+
+        /* واجهة الدخول - مودرن جداً */
+        #entry {
+            position: relative; z-index: 10; text-align: center;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .unlock-area {
+            cursor: pointer;
+            padding: 20px;
+        }
+
+        .line {
+            width: 1px; height: 80px; background: white; margin: 20px auto;
+            transform-origin: top; animation: scaleLine 2s infinite alternate;
+        }
+
+        @keyframes scaleLine { from { transform: scaleY(0.5); } to { transform: scaleY(1.2); } }
+
+        .entry-text {
+            color: white; letter-spacing: 8px; font-size: 0.9rem;
+            text-transform: uppercase; font-family: 'Montserrat';
+        }
+
+        /* كرت الدعوة - Ultra Modern Glassmorphism */
+        #card {
+            display: none; opacity: 0;
+            position: relative; z-index: 5;
+            width: 85%; max-width: 400px;
+            padding: 60px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0px; /* زوايا حادة للفخامة */
+            text-align: center; color: white;
+            transform: translateY(30px);
+            transition: all 1.5s ease;
+        }
+
+        .card-content { border: 1px solid rgba(197, 160, 89, 0.3); padding: 40px 20px; }
+
+        h1 { 
+            font-family: 'Montserrat'; font-weight: 300; font-size: 0.9rem;
+            letter-spacing: 10px; color: var(--accent); margin-bottom: 40px;
+        }
+
+        .names {
+            font-family: 'Amiri', serif; font-size: 2.5rem;
+            margin: 30px 0; font-weight: 400; line-height: 1.2;
+        }
+
+        .details {
+            font-family: 'Cairo'; font-weight: 300; font-size: 0.9rem;
+            line-height: 2; opacity: 0.8;
+        }
+
+        .date-box {
+            display: inline-block; border-top: 1px solid var(--accent);
+            border-bottom: 1px solid var(--accent);
+            padding: 10px 20px; margin: 20px 0;
+        }
+
+        /* زر الإغلاق/العودة */
+        .footer-logo { font-size: 1.5rem; color: var(--accent); margin-top: 30px; }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-wrapper">
+        <div class="bg-image" id="bg"></div>
+    </div>
+
+    <!-- زر الفتح المودرن -->
+    <div id="entry" onclick="openModernInvite()">
+        <div class="unlock-area">
+            <div class="entry-text">بكل حب ... اضغط هنا لتفتح لك    </div>
+            <div class="line"></div>
+            <div style="color: white; font-size: 0.7rem; letter-spacing: 2px;">WELCOME TO OUR DAY</div>
+        </div>
+    </div>
+
+    <!-- كرت الدعوة -->
+    <div id="card">
+        <div class="card-content">
+            <h1> عمرا معقوداً بالحب والسعادة</h1>
+            <p class="details" style="font-style: italic;">     ندعوكم بكل سرور لحظور حناء</p>
+            
+            <div class="names">محمد <span style="font-size: 1.2rem; display: block; color: var(--accent);">&</span>مريم</div>
+            
+            <div class="date-box">
+                <div class="details">الخميس . 28 . 05 . 2026</div>
+            </div>
+            
+            <div class="details">
+                التاسعة مساءً<br>
+              تزداد جدران منزلنا بجمال حضوركم نوراً..
+              نتشرف بدعوتكم لمشاركتنا فرحة الحناء في دارنا
+            </div>
+            
+            <div class="footer-logo">م & م</div>
+        </div>
+    </div>
+
+    <audio id="music" loop>
+        <source src="m-m44.mp4" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function openModernInvite() {
+            const entry = document.getElementById('entry');
+            const card = document.getElementById('card');
+            const bg = document.getElementById('bg');
+            const music = document.getElementById('music');
+
+            // تشغيل الموسيقى
+            music.play().catch(() => {});
+
+            // إخفاء واجهة الدخول
+            entry.style.opacity = '0';
+            entry.style.transform = 'scale(1.5)';
+            
+            // تحريك الخلفية (Zoom in)
+            bg.style.transform = 'scale(1.3)';
+
+            setTimeout(() => {
+                entry.style.display = 'none';
+                card.style.display = 'block';
+                // إظهار الكرت بتأثير Fade In
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
